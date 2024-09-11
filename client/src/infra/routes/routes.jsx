@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom'
-import Home from '../pages/Home/home'
+import ShortnerHome from '../../presentation/pages/shortner/shortner'
 
 export default function RoutesMainApp() {
   return (
     <Routes>
       <Route>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<ShortnerHome />}></Route>
       </Route>
     </Routes>
   )
