@@ -21,14 +21,14 @@ class LinkCreateShortUrlView(generics.CreateAPIView):
 
         existing_link = Links.objects.filter(url=original_url).first()
         if existing_link:
-            short_url = f"{os.environ.get('SITE_URL')}/api/{existing_link.short_hash}"
+            short_url = f"{os.environ.get('SITE_URL')}{existing_link.short_hash}"
             return Response({"original_url": original_url, "short_url": short_url})
 
         short_hash = generate_hash()
 
         link = Links.objects.create(url=original_url, short_hash=short_hash)
 
-        short_url = f"{os.environ.get('SITE_URL')}/api/{link.short_hash}"
+        short_url = f"{os.environ.get('SITE_URL')}{link.short_hash}"
         return Response({"original_url": original_url, "short_url": short_url})
 
 
