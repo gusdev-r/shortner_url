@@ -14,7 +14,7 @@ export const Label = styled.label`
   width: 100%;
   font-size: 22px;
   color: var(--greyDefault);
-  font-weight: 400;
+  font-weight: 500;
   margin-bottom: 15px;
   @media ${breakpoint.md1} {
     font-size: 12px;
@@ -27,7 +27,7 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   width: 52rem;
-  height: 3.8rem;
+  height: 3.5rem;
   border-radius: 12px;
   border: 1.5px solid var(--grey3);
   background: none;
@@ -55,9 +55,7 @@ export const Input = styled.input`
 `
 
 export const ErrorText = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  max-width: 22rem;
+  width: 52rem;
   font-weight: 400;
   font-size: 11px;
   color: var(--erro);

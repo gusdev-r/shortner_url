@@ -62,9 +62,7 @@ const GlobalStyled = createGlobalStyle`
         --transition-color-fast: color 0.3s ease;
         --transition-color-slow: color 0.5s ease;
         --transition-border-slow: border-color 0.5 ease;
-        --transition-all-slow: all ease 0.5s;
         --transition-width-fast: 250ms;
-        --transition-bg-boxshadow: background-color 0.5s ease, box-shadow 0.3s ease;
     }
 `
 

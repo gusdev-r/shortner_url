@@ -6,7 +6,7 @@ export default function FormInput({
   type,
   label,
   placeholder,
-  errors,
+  errors = {},
   register,
   registerName,
   ref,
@@ -17,12 +17,12 @@ export default function FormInput({
       <Input
         type={type}
         placeholder={placeholder}
-        // {...register(registerName)}
+        {...register(registerName)}
         red={ref}
       />
-      {/* {errors[registerName] && (
+      {errors[registerName] && (
         <ErrorText>{errors[registerName].message}</ErrorText>
-      )}{' '} */}
+      )}{' '}
     </FormInputContainer>
   )
 }

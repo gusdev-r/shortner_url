@@ -18,6 +18,9 @@ ALLOWED_HOSTS = []
 
 SITE_URL = os.environ.get("SITE_URL")
 
+
+CORS_ALLOW_ALL_ORIGINS = True
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -27,11 +30,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "shortner",
-    "rest_framework",
+    "shortner",  # app
+    "rest_framework",  # dep
+    "corsheaders",  # dep
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
