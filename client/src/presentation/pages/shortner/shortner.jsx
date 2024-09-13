@@ -133,10 +133,12 @@ const ShortnerHome = () => {
           {success ? (
             <ShortUrlShortSection>
               <UrlReturnBox>
-                <UrlShortTitle>Url encurtada</UrlShortTitle>
+                <UrlShortTitle>URL encurtada</UrlShortTitle>
+
                 <Url href={shortedUrl} target="_blank">
                   {shortedUrl}
                 </Url>
+
                 <ButtonUrl onClick={() => handleCopy(shortedUrl)}>
                   Copiar <FaRegCopy />
                 </ButtonUrl>
@@ -151,7 +153,7 @@ const ShortnerHome = () => {
               <InfoElement>
                 <TitleContainer>
                   <InfoTitle>Segurança</InfoTitle>
-                  <MdSecurity size={32} />
+                  <MdSecurity />
                 </TitleContainer>
                 <InfoSubTitle>
                   Proteja seus links com nossa camada extra de segurança.
@@ -160,7 +162,7 @@ const ShortnerHome = () => {
               <InfoElement>
                 <TitleContainer>
                   <InfoTitle>Responsivo</InfoTitle>
-                  <MdOutlinePinch size={32} />
+                  <MdOutlinePinch />
                 </TitleContainer>
                 <InfoSubTitle>
                   Acesse e gerencie seus links em qualquer dispositivo, a
@@ -170,7 +172,7 @@ const ShortnerHome = () => {
               <InfoElement>
                 <TitleContainer>
                   <InfoTitle>Rápido</InfoTitle>
-                  <IoFlash size={32} />
+                  <IoFlash />
                 </TitleContainer>
                 <InfoSubTitle>
                   Encurte seus links em segundos com eficiência.
@@ -179,7 +181,7 @@ const ShortnerHome = () => {
               <InfoElement>
                 <TitleContainer>
                   <InfoTitle>Fácil de Usar</InfoTitle>
-                  <MdOutlineTouchApp size={32} />
+                  <MdOutlineTouchApp />
                 </TitleContainer>
                 <InfoSubTitle>
                   Navegue e utilize nossas ferramentas com uma interface
@@ -189,7 +191,7 @@ const ShortnerHome = () => {
               <InfoElement>
                 <TitleContainer>
                   <InfoTitle>Grátis</InfoTitle>
-                  <FaCheck size={32} />
+                  <FaCheck />
                 </TitleContainer>
                 <InfoSubTitle>
                   Aproveite todas as funcionalidades sem nenhum custo!
@@ -198,7 +200,7 @@ const ShortnerHome = () => {
               <InfoElement>
                 <TitleContainer>
                   <InfoTitle>Links Curtos</InfoTitle>
-                  <SlSizeActual size={32} />
+                  <SlSizeActual />
                 </TitleContainer>
                 <InfoSubTitle>
                   Transforme URLs longas em links compactos e fáceis de
