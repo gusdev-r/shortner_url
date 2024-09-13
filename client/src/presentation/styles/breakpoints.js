@@ -1,15 +1,15 @@
 const sizes = {
-  sm0: '580px',
-  sm1: '680px',
-  sm2: '950px',
-  md1: '1200px',
+  sm0: '500px',
+  sm1: '750px',
+  md2: '1100px',
+  md1: '1400px',
   bg1: '1600px',
 }
 
 const breakpoint = {
   sm0: `(max-width: ${sizes.sm0})`,
   sm1: `(max-width: ${sizes.sm1})`,
-  sm2: `(max-width: ${sizes.sm2})`,
+  md2: `(max-width: ${sizes.md2})`,
   md1: `(max-width: ${sizes.md1})`,
   bg1: `(max-width: ${sizes.bg1})`,
 }
