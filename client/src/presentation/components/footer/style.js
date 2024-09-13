@@ -64,6 +64,10 @@ export const SocialIcons = styled.div`
   display: flex;
   gap: 20px;
   margin-bottom: 20px;
+  @media ${breakpoint.sm0} {
+    margin-bottom: 5px;
+    gap: 10px;
+  }
 `
 
 export const SocialIcon = styled.a`
@@ -74,33 +78,10 @@ export const SocialIcon = styled.a`
   &:hover {
     color: var(--grey2);
   }
+  @media ${breakpoint.sm0} {
+    font-size: 20px;
+  }
 `
-
-// export const PolicyContainer = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   gap: 30px;
-//   margin-bottom: 20px;
-//   @media ${breakpoint.sm2} {
-//     flex-direction: column;
-//     gap: 15px;
-//   }
-// `
-
-// export const PolicyLink = styled.a`
-//   color: var(--whiteDefault);
-//   text-decoration: none;
-//   font-size: 12px;
-//   transition: var(--transition-color-fast);
-
-//   &:hover {
-//     color: var(--grayDefault);
-//     text-decoration: underline;
-//   }
-//   @media ${breakpoint.sm2} {
-//     font-size: 10px;
-//   }
-// `
 
 export const Copyright = styled.div`
   font-size: 10px;
@@ -108,6 +89,9 @@ export const Copyright = styled.div`
   text-align: center;
   width: 100%;
   margin-top: 20px;
+  @media ${breakpoint.sm0} {
+    font-size: 8px;
+  }
 `
 
 export { FaInstagram, FaLinkedin, FaGithub, FaDiscord }
