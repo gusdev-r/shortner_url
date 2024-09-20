@@ -1,0 +1,5 @@
+dockerfile
+db.sqlite3
+readme
+.gitignore
+venv

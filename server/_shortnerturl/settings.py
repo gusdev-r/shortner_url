@@ -1,6 +1,8 @@
+""" EnX - Shortner URL - Django settings """
+
 from pathlib import Path
-import dotenv
 import os
+import dotenv
 
 dotenv.load_dotenv()
 
@@ -8,32 +10,42 @@ dotenv.load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-+=#ef_n)7+74k@buoe(u4j-45r1!k94z8i=&7hd9gj18ih^mnd"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if os.environ.get("DEV") else False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
+ADMIN_ENABLED = False
 
 SITE_URL = os.environ.get("SITE_URL")
 
 
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 
-INSTALLED_APPS = [
+DJANGO_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "shortner",  # app
-    "rest_framework",  # dep
-    "corsheaders",  # dep
 ]
+
+DEPENDENCIES = [
+    "rest_framework",
+    "corsheaders",
+]
+
+APPS = [
+    "shortner",
+]
+
+INSTALLED_APPS = DJANGO_APPS + DEPENDENCIES + APPS
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
@@ -46,7 +58,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "shortnerturl.urls"
+ROOT_URLCONF = "_shortnerturl.urls"
 
 TEMPLATES = [
     {
@@ -64,17 +76,30 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "shortnerturl.wsgi.application"
+WSGI_APPLICATION = "_shortnerturl.wsgi.application"
 
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Database
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+if os.environ.get("TEST"):
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.environ.get("POSTGRES_DB"),
+            "USER": os.environ.get("POSTGRES_USER"),
+            "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+            "HOST": os.environ.get("POSTGRES_HOST"),
+            "PORT": os.environ.get("POSTGRES_PORT"),
+        }
+    }
 
 
 # Password validation

@@ -33,16 +33,10 @@ O objetivo do EnX é proporcionar uma solução eficiente e intuitiva para o enc
 
 É necessário possuir Docker na sua máquina para rodar a aplicação dessa maneira
 
-### Builde a imagem
+### Builde a imagem e rode o **docker-compose** (lembre-se de estar no mesmo diretório que o arquivo do docker-compose)
 
 ```
-docker-compose build
-```
-
-### Rodar o **docker-compose**
-
-```
-docker-compose up
+docker-compose up --build
 ```
 
 <br/>
@@ -57,18 +51,31 @@ Entre na pasta client, lá você encontrará um tutorial simples de como iniciar
 
 Entre na pasta server, lá você encontrará um tutorial simples de como iniciar a aplicação back-end
 
+---
+
 ## Tecnologias usadas:
+
+### Backnd
 
 - Python
 - Django
+
+### Frontend
+
 - Vite
 - React
-- Docker
-- Git
-- GitHub
-- Postman
-- Beekeeper
 - HTML5
 - CSS3
 - Styled Components
+
+### DevOps
+
+- Docker
+- Git
+- GitHub
+
+### Utilidades
+
+- Postman
+- Beekeeper
 - Visual Studio Code
