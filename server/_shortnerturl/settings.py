@@ -78,6 +78,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "_shortnerturl.wsgi.application"
 
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Database
 
@@ -89,10 +90,9 @@ if os.environ.get("TEST"):
         }
     }
 else:
-    # Postgres config
     DATABASES = {
         "default": {
-            "ENGINE": "django.db.backends.PGql",
+            "ENGINE": "django.db.backends.postgresql",
             "NAME": os.environ.get("POSTGRES_DB"),
             "USER": os.environ.get("POSTGRES_USER"),
             "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
