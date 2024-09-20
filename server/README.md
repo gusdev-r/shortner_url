@@ -139,3 +139,10 @@ O arquivo `.env` é usado para armazenar variáveis de ambiente que configuram s
 1. **Crie um arquivo `.env`** na raiz do seu projeto.
 2. **Preencha as variáveis** conforme necessário.
 3. **Carregue as variáveis** no seu código usando a biblioteca `python-dotenv`
+
+### Builde a imagem separademnte e suba um container (esteja no diretório da imagem)
+
+```
+docker build -t <nome_da_imagem>:<tag> .
+docker run -d -p 8000:8000 --name <nome_do_container> -v <caminho_do_volume> <nome_da_imagem>:<tag>
+```

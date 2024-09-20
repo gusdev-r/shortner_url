@@ -32,3 +32,10 @@ yarn install
 ```bash
 yarn dev
 ```
+
+### Builde a imagem separademnte e suba um container (esteja no diretório da imagem)
+
+```
+docker build -t <nome_da_imagem>:<tag> .
+docker run -d -p 3000:3000 --name <nome_do_container> -v <caminho_do_volume> <nome_da_imagem>:<tag>
+```
