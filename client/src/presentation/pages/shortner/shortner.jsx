@@ -68,13 +68,15 @@ const ShortnerHome = () => {
       .then((response) => {
         setShortedUrl(response.data.short_url)
         setSuccess(true)
-        toast.success('Url encurtada com sucesso!')
+        toast.success('URL encurtada com sucesso!')
       })
       .catch((error) => {
         setSuccess(false)
         toast.error('Algo deu errado ao encurtar a url!')
       })
-    setisLoading(false)
+      .finally(() => {
+        setisLoading(false)
+      })
   }
 
   const handleInputChange = (e) => {
@@ -85,7 +87,7 @@ const ShortnerHome = () => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        toast.success('Url copiada!')
+        toast.success('URL copiada!')
       })
       .catch((err) => {
         toast.error('Algo deu errado.')

@@ -15,7 +15,7 @@ export const Label = styled.label`
   width: 100%;
   font-size: 22px;
   color: var(--greyDefault);
-  font-weight: 500;
+  font-weight: 700;
   margin-bottom: 15px;
   @media ${breakpoint.md2} {
     font-size: 18px;

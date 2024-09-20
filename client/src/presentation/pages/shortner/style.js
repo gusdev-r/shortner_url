@@ -245,10 +245,13 @@ export const UrlReturnBox = styled.div`
 `
 
 export const Url = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 30rem;
   height: 3.5rem;
   border: 1.5px solid var(--grey3);
-  margin: 0 0 10px 0;
+  margin: 0px 0 10px 0;
   border-radius: 12px;
   text-decoration: none;
   color: var(--whiteDefault);
@@ -340,7 +343,7 @@ export const UrlShortTitle = styled.p`
   width: 100%;
   font-size: 22px;
   color: var(--greyDefault);
-  font-weight: 500;
+  font-weight: 700;
   margin-bottom: 15px;
   @media ${breakpoint.md2} {
     font-size: 18px;
