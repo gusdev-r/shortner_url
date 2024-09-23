@@ -29,6 +29,12 @@ O objetivo do EnX é proporcionar uma solução eficiente e intuitiva para o enc
 
 ---
 
+## Arquitetura:
+
+<img align="center" alt="arquitetura" src="/client/public/shortner-url.jpg"/>
+
+---
+
 ## Para iniciar a aplicação inteira por meio do Docker
 
 É necessário possuir Docker na sua máquina para rodar a aplicação dessa maneira
