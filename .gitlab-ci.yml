@@ -1,0 +1,25 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build_docker_image:
+  stage: build
+  before_script:
+    - echo "Starting the job - Build Docker image"
+  script:
+    - docker-compose -f docker-compose.yml build
+  tags:
+    - docker
+
+test_application:
+  stage: test
+  before_script:
+    - echo "Starting application tests"
+  tags:
+    - docker
+
+deploy_application:
+  stage: deploy
+  script:
+    - echo "Deploying our application - test."
