@@ -16,6 +16,8 @@ test_application:
   stage: test
   before_script:
     - echo "Starting application tests"
+  script:
+    - echo "Running tests..."
   tags:
     - docker
 
