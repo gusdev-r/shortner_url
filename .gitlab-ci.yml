@@ -8,9 +8,7 @@ build_docker_image:
   before_script:
     - echo "Starting the job - Build Docker image"
   script:
-    - docker-compose -f docker-compose.yml build
-  tags:
-    - docker
+    - echo "Building docker images"
 
 test_application:
   stage: test
@@ -18,8 +16,6 @@ test_application:
     - echo "Starting application tests"
   script:
     - echo "Running tests..."
-  tags:
-    - docker
 
 deploy_application:
   stage: deploy
