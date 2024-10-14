@@ -146,8 +146,10 @@ export const ShortUrlSection = styled.section`
 export const InfoSection = styled.section`
   display: flex;
   align-items: center;
-  height: 30rem;
-  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 80%;
   margin-bottom: 60px;
 `
 
@@ -155,6 +157,7 @@ export const InfoContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 1rem;
 `
 
 export const InfoElement = styled.div`
@@ -162,35 +165,25 @@ export const InfoElement = styled.div`
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  padding: 85px 60px 0 60px;
-
+  padding: 1rem;
+  border: 1px solid var(--greyDefault);
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all ease 1s;
   svg {
-    font-size: 32px;
-    margin-left: 14px;
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
   }
 
-  @media ${breakpoint.bg1} {
-    padding: 65px 40px 0 40px;
+  &:hover {
+    color: var(--grey9);
+    border: 1px solid var(--grey9);
   }
-  @media ${breakpoint.md2} {
-    padding: 40px 15px 0 15px;
-  }
+
   @media ${breakpoint.sm1} {
-    padding: 20px 8px 0 8px;
     margin: 0 10px 0 10px;
     svg {
       font-size: 26px;
-      margin-left: 8px;
-    }
-  }
-  @media ${breakpoint.sm0} {
-    padding: 10px;
-    margin: 5px;
-    border-radius: 14px;
-    border: solid 1px var(--greyDefault);
-    svg {
-      font-size: 18px;
-      margin-left: 6px;
     }
   }
 `
@@ -198,25 +191,30 @@ export const InfoElement = styled.div`
 export const TitleContainer = styled.div`
   display: flex;
   align-items: center;
+  padding: 0 0.5rem;
 `
 
 export const InfoTitle = styled.h3`
   font-size: 24px;
   font-weight: 500;
-  margin-bottom: 8px;
+
   @media ${breakpoint.md2} {
     font-size: 20px;
-    margin-bottom: 6px;
   }
   @media ${breakpoint.sm1} {
     font-size: 16px;
-    margin-bottom: 4px;
   }
-  @media ${breakpoint.sm0} {
-    font-size: 10px;
-    margin-bottom: 2px;
-    border-bottom: 1px solid var(--greyDefault);
-  }
+`
+
+export const StyledMediumSubTitle = styled.p`
+  font-size: ${({ fontSize }) => fontSize || '1rem'};
+  color: ${({ color }) => color || 'var(--greyDefault)'};
+  margin: ${({ margin }) => margin || '0'};
+  text-align: ${({ textAlign }) => textAlign || 'left'};
+  font-weight: ${({ fontWeight }) => fontWeight || '600'};
+  width: ${({ width }) => width || '100%'};
+  padding-bottom: ${({ paddingBottom }) => paddingBottom || '0rem'};
+  line-height: 1.6;
 `
 
 export const InfoSubTitle = styled.p`
@@ -225,6 +223,12 @@ export const InfoSubTitle = styled.p`
   display: unset;
   font-size: 12px;
   text-align: left;
+  padding: 0.5rem;
+
+  &:hover {
+    color: var(--grey9);
+  }
+
   @media ${breakpoint.sm1} {
     max-width: 180px;
     font-size: 10px;
@@ -248,20 +252,17 @@ export const Url = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30rem;
-  height: 3.5rem;
   border: 1.5px solid var(--grey3);
+  padding: 1rem 4rem;
   margin: 0px 0 10px 0;
-  border-radius: 12px;
+  border-radius: 1rem;
+  font-size: 1rem;
   text-decoration: none;
   color: var(--whiteDefault);
-  @media ${breakpoint.md2} {
-    width: 22rem;
-    height: 2.8rem;
-  }
   @media ${breakpoint.sm1} {
-    width: 18rem;
-    height: 2.2rem;
+    font-size: 0.8rem;
+    padding: 0.8rem 3.5rem;
+    border-radius: 0.5rem;
   }
 `
 
@@ -269,17 +270,20 @@ export const ButtonUrl = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 10rem;
-  height: 3.4rem;
-  border-radius: 9px;
+  padding: 0.6rem 2rem;
+  border-radius: 0.5rem;
   border: none;
   color: var(--blackDefault);
   font-weight: 600;
-  border: none;
   z-index: 1;
-  background-color: var(--greyDefault);
+  background-color: var(--grey9);
   position: relative;
   transition: var(--transition-width-fast);
+  font-size: 0.9rem;
+
+  svg {
+    margin-left: 5px;
+  }
 
   &::before {
     content: '';
@@ -302,24 +306,9 @@ export const ButtonUrl = styled.button`
     width: 100%;
   }
 
-  svg {
-    margin-left: 5px;
-  }
-
-  @media ${breakpoint.bg1} {
-    width: 9rem;
-    height: 3.2rem;
-    font-size: 12px;
-  }
-  @media ${breakpoint.md2} {
-    width: 8.5rem;
-    height: 2.8rem;
-    font-size: 11px;
-  }
   @media ${breakpoint.sm1} {
-    width: 6rem;
-    height: 2.2rem;
-    font-size: 11px;
+    font-size: 0.8rem;
+    padding: 0.5rem 1.6rem;
   }
 `
 export const ShortUrlShortSection = styled.section`
@@ -344,7 +333,6 @@ export const UrlShortTitle = styled.p`
   font-size: 22px;
   color: var(--greyDefault);
   font-weight: 700;
-  margin-bottom: 15px;
   @media ${breakpoint.md2} {
     font-size: 18px;
   }
