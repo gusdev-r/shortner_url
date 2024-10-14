@@ -1,23 +1,25 @@
+import gblacklogo from '../../assets/images/g-black-logo-removebg.png'
 import {
-  FooterContainer,
-  LogoBox,
-  Logo,
-  LinksContainer,
-  MainContainer,
-  MainLink,
-  SocialIcons,
-  SocialIcon,
   Copyright,
+  FaDiscord,
+  FaGithub,
   FaInstagram,
   FaLinkedin,
-  FaGithub,
-  FaDiscord,
+  FooterContainer,
+  LinksContainer,
+  Logo,
+  LogoBox,
+  SocialIcon,
+  SocialIcons,
 } from './style'
 
 export const Footer = () => {
   return (
     <FooterContainer>
       <LinksContainer>
+        <LogoBox>
+          <Logo src={gblacklogo} alt="Logo" />
+        </LogoBox>
         <SocialIcons>
           <SocialIcon
             href="https://www.instagram.com/gusdev_r/"
