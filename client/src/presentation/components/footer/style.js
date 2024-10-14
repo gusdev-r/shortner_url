@@ -16,22 +16,22 @@ export const FooterContainer = styled.footer`
   }
 `
 
-export const LogoBox = styled.div`
-  display: flex;
-  justify-content: center;
-`
-
-export const Logo = styled.img`
-  max-width: 150px;
-  height: auto;
-`
-
 export const LinksContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   padding: 15px;
+`
+export const LogoBox = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0 2rem 0;
+`
+
+export const Logo = styled.img`
+  max-width: 9.5rem;
+  height: auto;
 `
 
 export const MainContainer = styled.div`
