@@ -8,12 +8,12 @@ RUN yarn install
 
 COPY . .
 
-RUN yarn dev
+# RUN yarn dev
 
 # Use this if you want to deploy in some enviroment
-# RUN yarn build
+RUN yarn build
 
 EXPOSE 3000
 
 # Use this if you want to deploy in some enviroment
-# CMD ["yarn", "serve"]
+CMD ["yarn", "serve"]
