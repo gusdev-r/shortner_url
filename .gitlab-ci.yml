@@ -1,6 +1,12 @@
 stages:
+  - build
   - test
   - deploy
+
+build_application:
+  stage: build
+  script:
+    - echo "Building App..."
 
 test_application:
   stage: test
@@ -19,6 +25,7 @@ deploy_to_homologation:
     - mkdir -p ~/.ssh
     - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
   script:
+    - ssh $SSH_USER@$SSH_HOST "git config --global --add safe.directory /opt/ENX/shortner_url"
     - ssh $SSH_USER@$SSH_HOST "cd /opt/ENX/shortner_url && git pull"
     - ssh $SSH_USER@$SSH_HOST "cd /opt/ENX/shortner_url && docker-compose up --build -d"
   only:
