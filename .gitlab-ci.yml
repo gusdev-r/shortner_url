@@ -1,14 +1,6 @@
 stages:
-  - build
   - test
   - deploy
-
-build_docker_image:
-  stage: build
-  before_script:
-    - echo "Starting the job - Build Docker image"
-  script:
-    - echo "Building docker images"
 
 test_application:
   stage: test
@@ -17,7 +9,17 @@ test_application:
   script:
     - echo "Running tests..."
 
-deploy_application:
+deploy_to_homologation:
   stage: deploy
+  before_script:
+    - echo "Deploying to homologation environment"
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
   script:
-    - echo "Deploying our application - test."
+    - ssh $SSH_USER@$SSH_HOST "cd /opt/ENX/shortner_url && git pull"
+    - ssh $SSH_USER@$SSH_HOST "cd /opt/ENX/shortner_url && docker-compose up --build -d"
+  only:
+    - main

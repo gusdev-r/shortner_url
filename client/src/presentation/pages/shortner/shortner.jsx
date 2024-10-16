@@ -21,6 +21,7 @@ import {
   ButtonUrl,
   ShortUrlShortSection,
   UrlShortTitle,
+  StyledMediumSubTitle,
 } from './style'
 import FormInput from '../../components/input/input'
 import { MdSecurity } from 'react-icons/md'
@@ -38,7 +39,7 @@ import { CgSpinnerTwo } from 'react-icons/cg'
 import { FaRegCopy } from 'react-icons/fa6'
 
 const ShortnerHome = () => {
-  const [success, setSuccess] = useState(false)
+  const [success, setSuccess] = useState(true)
   const [originalUrl, setOriginalUrl] = useState('')
   const [shortedUrl, setShortedUrl] = useState('')
   const [isLoading, setisLoading] = useState(false)
@@ -102,8 +103,9 @@ const ShortnerHome = () => {
             <WelcomeContainer>
               <Title>Encurtador de URL</Title>
               <TitleDesc>
-                Bem-vindo ao projeto EnX! Desenvolvido por gudev_r para encurtar
-                seus links de forma rápida e eficiente!
+                Bem-vindo ao projeto EnX! Desenvolvido por gudev_r (Gustavo
+                Henrique Moreira) para encurtar seus links de forma rápida e
+                eficiente!
               </TitleDesc>
             </WelcomeContainer>
           </WelcomeSection>
@@ -114,7 +116,7 @@ const ShortnerHome = () => {
             >
               <FormInput
                 type="text"
-                label="URL para encurtar"
+                label="Encurte sua URL aqui"
                 placeholder={
                   originalUrl ? originalUrl : 'Insira seu url nesse campo'
                 }
@@ -135,7 +137,10 @@ const ShortnerHome = () => {
           {success ? (
             <ShortUrlShortSection>
               <UrlReturnBox>
-                <UrlShortTitle>URL encurtada</UrlShortTitle>
+                <UrlShortTitle>URL encurtada.</UrlShortTitle>
+                <TitleDesc style={{ marginBottom: '1rem' }}>
+                  Clique na abaixo para copiar ou ser redirecionado.
+                </TitleDesc>
 
                 <Url href={shortedUrl} target="_blank">
                   {shortedUrl}
@@ -147,10 +152,17 @@ const ShortnerHome = () => {
               </UrlReturnBox>
             </ShortUrlShortSection>
           ) : (
-            <section></section>
+            <></>
           )}
 
           <InfoSection>
+            <StyledMediumSubTitle
+              textAlign="center"
+              paddingBottom="3rem"
+              fontSize="1.5rem"
+            >
+              Benefícios de usar a ferramenta
+            </StyledMediumSubTitle>
             <InfoContainer>
               <InfoElement>
                 <TitleContainer>
