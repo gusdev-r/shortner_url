@@ -27,6 +27,8 @@ deploy_to_homologation:
   script:
     - ssh $SSH_USER@$SSH_HOST "git config --global --add safe.directory /opt/ENX/shortner_url"
     - ssh $SSH_USER@$SSH_HOST "cd /opt/ENX/shortner_url && sudo git pull"
+    - ssh $SSH_USER@$SSH_HOST "cd /opt/ENX/shortner_url && sudo docker-compose down"
     - ssh $SSH_USER@$SSH_HOST "cd /opt/ENX/shortner_url && sudo docker-compose up --build -d"
+    - ssh $SSH_USER@$SSH_HOST "cd /opt/ENX/shortner_url && sudo docker-compose ps"
   only:
     - main
