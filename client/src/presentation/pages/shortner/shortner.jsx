@@ -44,11 +44,11 @@ const ShortnerHome = () => {
   const [shortedUrl, setShortedUrl] = useState('')
   const [isLoading, setisLoading] = useState(false)
 
-  // useEffect(() => {
-  //   setSuccess(false)
-  //   setShortedUrl('')
-  //   setisLoading(false)
-  // }, [originalUrl])
+  useEffect(() => {
+    setSuccess(false)
+    setShortedUrl('')
+    setisLoading(false)
+  }, [originalUrl])
 
   const {
     register,
