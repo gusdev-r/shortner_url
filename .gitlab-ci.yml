@@ -1,0 +1,25 @@
+stages:
+  - test
+  - deploy
+
+test_application:
+  stage: test
+  before_script:
+    - echo "Starting application tests"
+  script:
+    - echo "Running tests..."
+
+deploy_to_homologation:
+  stage: deploy
+  before_script:
+    - echo "Deploying to homologation environment"
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+  script:
+    - ssh $SSH_USER@$SSH_HOST "cd /opt/ENX/shortner_url && git pull"
+    - ssh $SSH_USER@$SSH_HOST "cd /opt/ENX/shortner_url && docker-compose up --build -d"
+  only:
+    - main
