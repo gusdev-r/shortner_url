@@ -20,7 +20,7 @@ services:
     env_file:
       - ./client/.env
     ports:
-      - '3000:3000'
+      - '4173:4173'
     restart: unless-stopped
     links:
       - server
