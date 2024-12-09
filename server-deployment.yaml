@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: enx-server
+spec:
+  selector:
+    matchLabels:
+      app: enx-server
+  template:
+    metadata:
+      labels:
+        app: enx-server
+    spec:
+      containers:
+        - name: enx-server
+          image: gusdevr/enx-server:v1.0
+          ports:
+            - containerPort: 8000
+          env:
+            - name: VITE_BASE_URL_BACKEND
+          valueFrom:
+            configMapKeyRef:
+              name: secret
+              key: VITE_BASE_URL_BACKEND
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: enx-client-service
+spec:
+  selector:
+    app: enx-client-service
+  ports:
+    - port: 3000
+      targetPort: 3000
+  type: LoadBalancer

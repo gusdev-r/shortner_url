@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: enx-client
+spec:
+  selector:
+    matchLabels:
+      app: enx-client
+  template:
+    metadata:
+      labels:
+        app: enx-client
+    spec:
+      containers:
+        - name: enx-client
+          image: gusdevr/enx-client:v1.0
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: enx-server-service
+spec:
+  selector:
+    app: enx-server-service
+  ports:
+    - port: 8000
+      targetPort: 8000

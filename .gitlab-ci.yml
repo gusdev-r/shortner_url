@@ -15,11 +15,11 @@ test_application:
   script:
     - echo "Running tests..."
 
-deploy_to_homologation:
+deploy_to_homologate:
   stage: deploy
   before_script:
-    - echo "Deploying to homologation environment"
-    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - echo "Deploying to homologate environment"
+    - "which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )"
     - eval $(ssh-agent -s)
     - ssh-add <(echo "$SSH_PRIVATE_KEY")
     - mkdir -p ~/.ssh
@@ -27,6 +27,8 @@ deploy_to_homologation:
   script:
     - ssh $SSH_USER@$SSH_HOST "git config --global --add safe.directory /opt/ENX/shortner_url"
     - ssh $SSH_USER@$SSH_HOST "cd /opt/ENX/shortner_url && sudo git pull"
+    - ssh $SSH_USER@$SSH_HOST "cd /opt/ENX/shortner_url && sudo docker-compose down"
     - ssh $SSH_USER@$SSH_HOST "cd /opt/ENX/shortner_url && sudo docker-compose up --build -d"
+    - ssh $SSH_USER@$SSH_HOST "cd /opt/ENX/shortner_url && sudo docker-compose ps"
   only:
     - main
