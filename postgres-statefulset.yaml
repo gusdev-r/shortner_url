@@ -6,8 +6,8 @@ spec:
   selector:
     matchLabels:
       app: postgres
-  serviceName: postgres-h
-  replicas: 2
+  serviceName: postgres-service
+  replicas: 1
   template:
     metadata:
       labels:
@@ -20,20 +20,17 @@ spec:
             - containerPort: 5432
           env:
             - name: POSTGRES_DB
-              value: enx-db
-            - name: POSTGRES__USER
-              valueFrom:
-                configMapKeyRef:
-                  name: secret
-                  key: POSTGRES_USER
+              value: "enx"
+            - name: POSTGRES_USER
+              value: "postgres"
             - name: POSTGRES_PASSWORD
               valueFrom:
-                configMapKeyRef:
-                  name: postgres-secret
+                secretKeyRef:
+                  name: db-secret
                   key: POSTGRES_PASSWORD
           volumeMounts:
             - name: postgres-storage
-              mountPath: /var/lib/postgresql
+              mountPath: /var/lib/postgresql/data
   volumeClaimTemplates:
     - metadata:
         name: postgres-storage

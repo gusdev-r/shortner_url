@@ -14,14 +14,26 @@ spec:
       containers:
         - name: enx-server
           image: gusdevr/enx-server:v1.0
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "200m"
+              memory: "512Mi"
           ports:
             - containerPort: 8000
-          env:
-            - name: VITE_BASE_URL_BACKEND
-          valueFrom:
-            configMapKeyRef:
-              name: secret
-              key: VITE_BASE_URL_BACKEND
+          volumeMounts:
+            - name: env-volume
+              mountPath: server/.env
+              subPath: .env
+      volumes:
+        - name: env-volume
+          configMap:
+            name: env-configmap
+            items:
+              - key: .env
+                path: .env
 ---
 apiVersion: v1
 kind: Service
