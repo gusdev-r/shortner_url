@@ -1,3 +1,4 @@
+import datetime
 import os
 from .serializers import LinkSerializer
 from rest_framework import generics
@@ -6,6 +7,8 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from django.shortcuts import redirect, get_object_or_404
 from .utils import generate_hash
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
 
 
 class LinkCreateShortUrlView(generics.CreateAPIView):
@@ -33,7 +36,14 @@ class LinkCreateShortUrlView(generics.CreateAPIView):
 
 
 class LinkRedirectToUrlView(generics.GenericAPIView):
+    @method_decorator(cache_page(60 * 15))
     def get(self, request, short_hash, *args, **kwargs):
+        error_page_url = os.environ.get(
+            "ERROR_PAGE_URL", "http://127.0.0.1:4137/api/error_page"
+        )
         found_link = get_object_or_404(Links, short_hash=short_hash)
-        print(found_link)
-        return redirect(found_link.url)
+        return (
+            redirect(error_page_url)
+            if found_link.is_expired()
+            else self.redirect_to_url(found_link)
+        )

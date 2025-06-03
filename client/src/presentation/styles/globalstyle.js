@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyled = createGlobalStyle`
     * {
@@ -9,6 +9,7 @@ const GlobalStyled = createGlobalStyle`
     }
 
     body {
+        cursor: none;
     }
 
     button {
@@ -64,6 +65,6 @@ const GlobalStyled = createGlobalStyle`
         --transition-border-slow: border-color 0.5 ease;
         --transition-width-fast: 250ms;
     }
-`
+`;
 
-export default GlobalStyled
+export default GlobalStyled;

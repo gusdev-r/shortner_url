@@ -1,12 +1,12 @@
-import styled from 'styled-components'
-import breakpoint from '../../styles/breakpoints'
+import styled from "styled-components";
+import breakpoint from "../../styles/breakpoints";
 
 export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background-color: var(--black1);
-`
+`;
 export const MainContent = styled.main`
   padding-top: 4.5rem;
   flex: 1;
@@ -19,7 +19,7 @@ export const MainContent = styled.main`
     margin-right: 0rem;
     margin-left: 0rem;
   }
-`
+`;
 
 export const WelcomeSection = styled.section`
   display: flex;
@@ -29,14 +29,14 @@ export const WelcomeSection = styled.section`
   @media ${breakpoint.sm1} {
     height: 10rem;
   }
-`
+`;
 export const WelcomeContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100%;
-`
+`;
 
 export const Title = styled.h1`
   font-size: 5rem;
@@ -51,7 +51,7 @@ export const Title = styled.h1`
   @media ${breakpoint.sm0} {
     font-size: 2.4rem;
   }
-`
+`;
 
 export const TitleDesc = styled.p`
   max-width: 600px;
@@ -65,7 +65,7 @@ export const TitleDesc = styled.p`
     max-width: 350px;
     font-size: 10px;
   }
-`
+`;
 
 export const ButtonNow = styled.button`
   width: 22rem;
@@ -115,7 +115,7 @@ export const ButtonNow = styled.button`
     font-size: 10px;
     border-radius: 8px;
   }
-`
+`;
 
 export const ShortUrlSection = styled.section`
   display: flex;
@@ -141,7 +141,7 @@ export const ShortUrlSection = styled.section`
     padding: 15px;
     border-radius: 22px;
   }
-`
+`;
 
 export const InfoSection = styled.section`
   display: flex;
@@ -151,14 +151,14 @@ export const InfoSection = styled.section`
   height: 100%;
   width: 80%;
   margin-bottom: 60px;
-`
+`;
 
 export const InfoContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
-`
+`;
 
 export const InfoElement = styled.div`
   display: flex;
@@ -186,13 +186,13 @@ export const InfoElement = styled.div`
       font-size: 26px;
     }
   }
-`
+`;
 
 export const TitleContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 0 0.5rem;
-`
+`;
 
 export const InfoTitle = styled.h3`
   font-size: 24px;
@@ -204,18 +204,18 @@ export const InfoTitle = styled.h3`
   @media ${breakpoint.sm1} {
     font-size: 16px;
   }
-`
+`;
 
 export const StyledMediumSubTitle = styled.p`
-  font-size: ${({ fontSize }) => fontSize || '1rem'};
-  color: ${({ color }) => color || 'var(--greyDefault)'};
-  margin: ${({ margin }) => margin || '0'};
-  text-align: ${({ textAlign }) => textAlign || 'left'};
-  font-weight: ${({ fontWeight }) => fontWeight || '600'};
-  width: ${({ width }) => width || '100%'};
-  padding-bottom: ${({ paddingBottom }) => paddingBottom || '0rem'};
+  font-size: ${({ fontSize }) => fontSize || "1rem"};
+  color: ${({ color }) => color || "var(--greyDefault)"};
+  margin: ${({ margin }) => margin || "0"};
+  text-align: ${({ textAlign }) => textAlign || "left"};
+  font-weight: ${({ fontWeight }) => fontWeight || "600"};
+  width: ${({ width }) => width || "100%"};
+  padding-bottom: ${({ paddingBottom }) => paddingBottom || "0rem"};
   line-height: 1.6;
-`
+`;
 
 export const InfoSubTitle = styled.p`
   max-width: 250px;
@@ -225,6 +225,8 @@ export const InfoSubTitle = styled.p`
   text-align: left;
   padding: 0.5rem;
 
+  transition: all 1s ease;
+
   &:hover {
     color: var(--grey9);
   }
@@ -233,20 +235,20 @@ export const InfoSubTitle = styled.p`
     max-width: 180px;
     font-size: 10px;
   }
-`
+`;
 export const FormUrl = styled.form`
   width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
-`
+`;
 
 export const UrlReturnBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-`
+`;
 
 export const Url = styled.a`
   display: flex;
@@ -264,7 +266,7 @@ export const Url = styled.a`
     padding: 0.8rem 3.5rem;
     border-radius: 0.5rem;
   }
-`
+`;
 
 export const ButtonUrl = styled.button`
   display: flex;
@@ -286,7 +288,7 @@ export const ButtonUrl = styled.button`
   }
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -310,7 +312,7 @@ export const ButtonUrl = styled.button`
     font-size: 0.8rem;
     padding: 0.5rem 1.6rem;
   }
-`
+`;
 export const ShortUrlShortSection = styled.section`
   display: flex;
   justify-content: center;
@@ -326,7 +328,7 @@ export const ShortUrlShortSection = styled.section`
   @media ${breakpoint.sm1} {
     height: 12rem;
   }
-`
+`;
 
 export const UrlShortTitle = styled.p`
   width: 100%;
@@ -342,4 +344,4 @@ export const UrlShortTitle = styled.p`
   @media ${breakpoint.sm1} {
     font-size: 12px;
   }
-`
+`;

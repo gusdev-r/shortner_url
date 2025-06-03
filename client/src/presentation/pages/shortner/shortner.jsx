@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Footer } from '../../components/footer/footer'
+import React, { useEffect, useState } from "react";
+import { Footer } from "../../components/footer/footer";
 import {
   MainContent,
   PageContainer,
@@ -22,33 +22,33 @@ import {
   ShortUrlShortSection,
   UrlShortTitle,
   StyledMediumSubTitle,
-} from './style'
-import FormInput from '../../components/input/input'
-import { MdSecurity } from 'react-icons/md'
-import { MdOutlinePinch } from 'react-icons/md'
-import { IoFlash } from 'react-icons/io5'
-import { MdOutlineTouchApp } from 'react-icons/md'
-import { FaCheck } from 'react-icons/fa6'
-import { SlSizeActual } from 'react-icons/sl'
-import { toast } from 'react-toastify'
-import api from '../../../infra/server/api'
-import urlValidation from './validation'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { useForm } from 'react-hook-form'
-import { CgSpinnerTwo } from 'react-icons/cg'
-import { FaRegCopy } from 'react-icons/fa6'
+} from "./style";
+import FormInput from "../../components/input/input";
+import { MdSecurity } from "react-icons/md";
+import { MdOutlinePinch } from "react-icons/md";
+import { IoFlash } from "react-icons/io5";
+import { MdOutlineTouchApp } from "react-icons/md";
+import { FaCheck } from "react-icons/fa6";
+import { SlSizeActual } from "react-icons/sl";
+import { toast } from "react-toastify";
+import api from "../../../infra/server/api";
+import urlValidation from "./validation";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { CgSpinnerTwo } from "react-icons/cg";
+import { FaRegCopy } from "react-icons/fa6";
 
 const ShortnerHome = () => {
-  const [success, setSuccess] = useState(true)
-  const [originalUrl, setOriginalUrl] = useState('')
-  const [shortedUrl, setShortedUrl] = useState('')
-  const [isLoading, setisLoading] = useState(false)
+  const [success, setSuccess] = useState(true);
+  const [originalUrl, setOriginalUrl] = useState("");
+  const [shortedUrl, setShortedUrl] = useState("");
+  const [isLoading, setisLoading] = useState(false);
 
   useEffect(() => {
-    setSuccess(false)
-    setShortedUrl('')
-    setisLoading(false)
-  }, [originalUrl])
+    setSuccess(false);
+    setShortedUrl("");
+    setisLoading(false);
+  }, [originalUrl]);
 
   const {
     register,
@@ -56,44 +56,44 @@ const ShortnerHome = () => {
     handleSubmit,
   } = useForm({
     resolver: yupResolver(urlValidation),
-  })
+  });
 
   function shortUrl(data) {
-    setOriginalUrl(data.url)
+    setOriginalUrl(data.url);
     const params = {
       url: data.url,
-    }
-    setisLoading(true)
+    };
+    setisLoading(true);
     api
-      .post('/url/shorten/', params)
+      .post("/url/shorten/", params)
       .then((response) => {
-        setShortedUrl(response.data.short_url)
-        setSuccess(true)
-        toast.success('URL encurtada com sucesso!')
+        setShortedUrl(response.data.short_url);
+        setSuccess(true);
+        toast.success("URL encurtada com sucesso!");
       })
       .catch((error) => {
-        setSuccess(false)
-        toast.error('Algo deu errado ao encurtar a url!')
+        setSuccess(false);
+        toast.error("Algo deu errado ao encurtar a url!");
       })
       .finally(() => {
-        setisLoading(false)
-      })
+        setisLoading(false);
+      });
   }
 
   const handleInputChange = (e) => {
-    setOriginalUrl(e.target.value)
-  }
+    setOriginalUrl(e.target.value);
+  };
 
   const handleCopy = (text) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        toast.success('URL copiada!')
+        toast.success("URL copiada!");
       })
       .catch((err) => {
-        toast.error('Algo deu errado.')
-      })
-  }
+        toast.error("Algo deu errado.");
+      });
+  };
 
   return (
     <>
@@ -118,7 +118,7 @@ const ShortnerHome = () => {
                 type="text"
                 label="Encurte sua URL aqui"
                 placeholder={
-                  originalUrl ? originalUrl : 'Insira seu url nesse campo'
+                  originalUrl ? originalUrl : "Insira seu url nesse campo"
                 }
                 errors={errors}
                 register={register}
@@ -128,7 +128,7 @@ const ShortnerHome = () => {
                 {isLoading ? (
                   <CgSpinnerTwo className="icon" size={26} />
                 ) : (
-                  'Clique para encurtar sua URL'
+                  "Clique para encurtar sua URL"
                 )}
               </ButtonNow>
             </FormUrl>
@@ -138,7 +138,7 @@ const ShortnerHome = () => {
             <ShortUrlShortSection>
               <UrlReturnBox>
                 <UrlShortTitle>URL encurtada.</UrlShortTitle>
-                <TitleDesc style={{ marginBottom: '1rem' }}>
+                <TitleDesc style={{ marginBottom: "1rem" }}>
                   Clique na abaixo para copiar ou ser redirecionado.
                 </TitleDesc>
 
@@ -227,7 +227,7 @@ const ShortnerHome = () => {
         <Footer />
       </PageContainer>
     </>
-  )
-}
+  );
+};
 
-export default ShortnerHome
+export default ShortnerHome;
