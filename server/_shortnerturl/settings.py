@@ -1,4 +1,4 @@
-""" EnX - Shortner URL - Django settings """
+"""EnX - Shortner URL - Django settings"""
 
 from pathlib import Path
 import os
@@ -41,9 +41,7 @@ DEPENDENCIES = [
     "corsheaders",
 ]
 
-APPS = [
-    "shortner",
-]
+APPS = ["shortner", "qr_code"]
 
 INSTALLED_APPS = DJANGO_APPS + DEPENDENCIES + APPS
 
@@ -138,3 +136,13 @@ STATIC_URL = "static/"
 # Default primary key field type
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+    }
+}
