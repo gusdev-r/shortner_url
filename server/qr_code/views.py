@@ -1,10 +1,13 @@
 from datetime import timezone
+from datetime import timedelta, datetime
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from rest_framework.views import APIView
 from .models import QrCode
 from .serializers import QRCodeSerializer as QRCOS
+from rest_framework.response import Response
 import uuid
+from rest_framework import status
 
 
 class QRCodeScanView(APIView):
@@ -12,7 +15,7 @@ class QRCodeScanView(APIView):
         try:
             qr_code_id = uuid.UUID(qr_code_id)
         except ValueError:
-            return HttpResponse("Invalid QR Code ID", status=400)
+            return Response("Invalid QR Code ID", status=400)
 
         qr_code: QrCode = get_object_or_404(QrCode, id=qr_code_id)
         qr_code.scan_count += 1
@@ -21,7 +24,33 @@ class QRCodeScanView(APIView):
 
         if qr_code.is_url:
             return HttpResponseRedirect(qr_code.content)
-        return HttpResponse(qr_code.content, content_type="text/plain", status=200)
+        return Response(qr_code.content, content_type="text/plain", status=200)
+
+
+class LinkExtendExpirationView(APIView):
+    def patch(self, request, short_hash, *args, **kwargs):
+        serializer = QRCOS(data=request.data)
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        extend_expiration = serializer.validated_data.get("extend_expiration")
+        if not extend_expiration:
+            return Response(
+                {"error": "Field 'extend_expiration' is required."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        found_link = get_object_or_404(QrCode, short_hash=short_hash)
+        found_link.expiration_date = (
+            found_link.expiration_date + extend_expiration
+            if found_link.expiration_date
+            else datetime.now() + extend_expiration
+        )
+        found_link.save()
+
+        return Response(
+            {"message": "Expiration date extended successfully."},
+            status=status.HTTP_200_OK,
+        )
 
 
 class QRCodeCreateView(APIView):
@@ -30,7 +59,7 @@ class QRCodeCreateView(APIView):
         if serializer.is_valid():
             qr_code = serializer.save()
 
-            return HttpResponse(
+            return Response(
                 {
                     "id": str(qr_code.id),
                     "name": qr_code.name,
@@ -40,4 +69,4 @@ class QRCodeCreateView(APIView):
                 },
                 status=201,
             )
-        return HttpResponse(serializer.errors, status=400)
+        return Response(serializer.errors, status=400)
